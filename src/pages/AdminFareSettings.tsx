@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { PlusCircle, Edit2, Trash2, MapPin, DollarSign } from 'lucide-react';
+import { PlusCircle, Edit2, Trash2, MapPin, DollarSign, Map as MapIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface FareRule {
@@ -455,7 +455,7 @@ const AdminFareSettings = () => {
             <CardContent>
               <div className="h-96 bg-gray-200 rounded-md flex items-center justify-center">
                 <div className="text-center">
-                  <Map className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+                  <MapIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
                   <p className="text-gray-600">Interactive geofencing map will be integrated here</p>
                   <p className="text-sm text-gray-500 mt-2">You'll be able to draw zones directly on the map</p>
                 </div>
