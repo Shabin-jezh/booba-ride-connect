@@ -1,19 +1,32 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 
+const taxiTypes = [
+  { id: 'economy', name: 'Economy', description: 'Affordable rides for everyday use', price: '1x', emoji: '🚗' },
+  { id: 'comfort', name: 'Comfort', description: 'More space and comfort', price: '1.5x', emoji: '🚕' },
+  { id: 'suv', name: 'SUV', description: 'Spacious vehicles for groups', price: '2x', emoji: '🚙' },
+  { id: 'premium', name: 'Premium', description: 'Luxury vehicles for special occasions', price: '3x', emoji: '🏎️' }
+];
+
 const BookTaxiForm = () => {
-  const [pickupDate, setPickupDate] = React.useState<Date | undefined>(new Date());
+  const [pickupDate, setPickupDate] = useState<Date | undefined>(new Date());
+  const [selectedTaxiType, setSelectedTaxiType] = useState('economy');
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Taxi booking initiated! Redirecting to booking page...");
+    
+    // Find the selected taxi type
+    const taxiType = taxiTypes.find(type => type.id === selectedTaxiType);
+    
+    toast.success(`Taxi booking initiated for ${taxiType?.name}! Redirecting to booking page...`);
     // In a real app, you would redirect to the booking page or proceed with the booking
   };
   
@@ -75,6 +88,33 @@ const BookTaxiForm = () => {
             required
           />
         </div>
+      </div>
+      
+      <div className="space-y-2">
+        <label className="text-sm font-medium">Taxi Type</label>
+        <RadioGroup 
+          value={selectedTaxiType} 
+          onValueChange={setSelectedTaxiType}
+          className="grid grid-cols-2 gap-3"
+        >
+          {taxiTypes.map((type) => (
+            <div 
+              key={type.id} 
+              className={`border rounded-md p-3 hover:border-booba-yellow cursor-pointer transition-colors ${selectedTaxiType === type.id ? 'border-booba-yellow bg-booba-yellow/10' : ''}`}
+              onClick={() => setSelectedTaxiType(type.id)}
+            >
+              <RadioGroupItem value={type.id} id={type.id} className="sr-only" />
+              <div className="flex items-start gap-2">
+                <span className="text-xl">{type.emoji}</span>
+                <div>
+                  <h4 className="text-sm font-medium">{type.name}</h4>
+                  <p className="text-xs text-gray-500">{type.description}</p>
+                  <p className="text-xs font-bold mt-1">{type.price} fare</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </RadioGroup>
       </div>
       
       <Button 

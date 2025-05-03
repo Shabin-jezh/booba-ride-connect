@@ -11,6 +11,9 @@ import {
   Bell,
   Menu,
   Home,
+  MapPin,
+  DollarSign,
+  Map,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -28,7 +31,9 @@ const DashboardLayout = ({ children, userType }: DashboardLayoutProps) => {
         { name: 'Dashboard', href: '/admin', icon: Home },
         { name: 'Users', href: '/admin/users', icon: User },
         { name: 'Drivers', href: '/admin/drivers', icon: User },
-        { name: 'Vehicles', href: '/admin/vehicles', icon: Car },
+        { name: 'Taxi Types', href: '/admin/taxi-types', icon: Car },
+        { name: 'Fare Settings', href: '/admin/fare-settings', icon: DollarSign },
+        { name: 'Geofencing', href: '/admin/geofencing', icon: Map },
         { name: 'Bookings', href: '/admin/bookings', icon: Bell },
         { name: 'Settings', href: '/admin/settings', icon: Settings },
       ]

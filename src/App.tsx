@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminTaxiTypes from "./pages/AdminTaxiTypes";
+import AdminFareSettings from "./pages/AdminFareSettings";
+import AdminGeofencing from "./pages/AdminGeofencing";
 import DriverDashboard from "./pages/DriverDashboard";
 import NotFound from "./pages/NotFound";
 
@@ -24,6 +27,9 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/taxi-types" element={<AdminTaxiTypes />} />
+          <Route path="/admin/fare-settings" element={<AdminFareSettings />} />
+          <Route path="/admin/geofencing" element={<AdminGeofencing />} />
           <Route path="/driver" element={<DriverDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
