@@ -1,17 +1,34 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { toast } from 'sonner';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 
 const Login = () => {
+  const [userType, setUserType] = useState('customer');
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.success("Login successful!");
-    // In a real app, this would handle authentication
+    
+    // Navigate based on user type
+    switch (userType) {
+      case 'admin':
+        navigate('/admin');
+        break;
+      case 'driver':
+        navigate('/driver');
+        break;
+      default:
+        navigate('/');
+        break;
+    }
   };
 
   return (
@@ -50,6 +67,29 @@ const Login = () => {
                     required
                   />
                 </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">I am a:</label>
+                  <RadioGroup 
+                    value={userType} 
+                    onValueChange={setUserType}
+                    className="flex space-x-2"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="customer" id="customer" />
+                      <Label htmlFor="customer">Customer</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="driver" id="driver" />
+                      <Label htmlFor="driver">Driver</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="admin" id="admin" />
+                      <Label htmlFor="admin">Admin</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+                
                 <Button type="submit" className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90">
                   Log in
                 </Button>
