@@ -11,7 +11,10 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminTaxiTypes from "./pages/AdminTaxiTypes";
 import AdminFareSettings from "./pages/AdminFareSettings";
 import AdminGeofencing from "./pages/AdminGeofencing";
+import AdminRentalVehicles from "./pages/AdminRentalVehicles";
+import AdminPaymentSettings from "./pages/AdminPaymentSettings";
 import DriverDashboard from "./pages/DriverDashboard";
+import DriverBankDetails from "./pages/DriverBankDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,7 +33,10 @@ const App = () => (
           <Route path="/admin/taxi-types" element={<AdminTaxiTypes />} />
           <Route path="/admin/fare-settings" element={<AdminFareSettings />} />
           <Route path="/admin/geofencing" element={<AdminGeofencing />} />
+          <Route path="/admin/rental-vehicles" element={<AdminRentalVehicles />} />
+          <Route path="/admin/payment-settings" element={<AdminPaymentSettings />} />
           <Route path="/driver" element={<DriverDashboard />} />
+          <Route path="/driver/bank-details" element={<DriverBankDetails />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

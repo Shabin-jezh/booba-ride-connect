@@ -4,8 +4,9 @@ import DashboardLayout from '@/components/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Line } from 'recharts';
+import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Line, BarChart, Bar } from 'recharts';
 import { toast } from 'sonner';
+import { Star, Users, Clock, Calendar, ChartBar } from 'lucide-react';
 
 const earningsData = [
   { name: 'Mon', earnings: 120 },
@@ -15,6 +16,13 @@ const earningsData = [
   { name: 'Fri', earnings: 210 },
   { name: 'Sat', earnings: 250 },
   { name: 'Sun', earnings: 180 },
+];
+
+const performanceData = [
+  { name: 'Week 1', rides: 32, rating: 4.7 },
+  { name: 'Week 2', rides: 28, rating: 4.8 },
+  { name: 'Week 3', rides: 35, rating: 4.9 },
+  { name: 'Week 4', rides: 42, rating: 4.8 },
 ];
 
 const DriverDashboard = () => {
@@ -96,7 +104,7 @@ const DriverDashboard = () => {
         </Card>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Weekly Earnings</CardTitle>
@@ -161,6 +169,195 @@ const DriverDashboard = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Performance Metrics Section */}
+      <h2 className="text-xl font-bold mb-4">Performance Metrics</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Monthly Performance</CardTitle>
+            <CardDescription>Rides completed and rating trend</CardDescription>
+          </CardHeader>
+          <CardContent className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={performanceData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis yAxisId="left" orientation="left" />
+                <YAxis yAxisId="right" orientation="right" domain={[3, 5]} />
+                <Tooltip />
+                <Legend />
+                <Bar yAxisId="left" dataKey="rides" fill="#333333" name="Rides Completed" />
+                <Line yAxisId="right" type="monotone" dataKey="rating" stroke="#FFDA29" name="Rating" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+        
+        <div className="grid grid-cols-1 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Your Rating</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="mr-4 bg-booba-yellow/10 p-3 rounded-md">
+                    <Star className="h-8 w-8 text-booba-yellow" />
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold">4.8</div>
+                    <div className="text-sm text-gray-500">Out of 5</div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm text-gray-500">Based on</div>
+                  <div className="text-lg font-medium">385 rides</div>
+                </div>
+              </div>
+              
+              <div className="space-y-2 mt-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-booba-yellow mr-1" />
+                    <span className="text-sm">5</span>
+                  </div>
+                  <div className="w-full mx-4 bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-booba-yellow h-2.5 rounded-full" style={{ width: '70%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium">70%</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-booba-yellow mr-1" />
+                    <span className="text-sm">4</span>
+                  </div>
+                  <div className="w-full mx-4 bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-booba-yellow h-2.5 rounded-full" style={{ width: '20%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium">20%</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-booba-yellow mr-1" />
+                    <span className="text-sm">3</span>
+                  </div>
+                  <div className="w-full mx-4 bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-booba-yellow h-2.5 rounded-full" style={{ width: '8%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium">8%</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-booba-yellow mr-1" />
+                    <span className="text-sm">2</span>
+                  </div>
+                  <div className="w-full mx-4 bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-booba-yellow h-2.5 rounded-full" style={{ width: '2%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium">2%</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-booba-yellow mr-1" />
+                    <span className="text-sm">1</span>
+                  </div>
+                  <div className="w-full mx-4 bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-booba-yellow h-2.5 rounded-full" style={{ width: '0%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium">0%</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col items-center">
+                  <div className="bg-gray-100 p-3 rounded-full mb-2">
+                    <Users className="h-6 w-6 text-booba-yellow" />
+                  </div>
+                  <div className="text-2xl font-bold">137</div>
+                  <div className="text-sm text-gray-500">Passengers This Month</div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col items-center">
+                  <div className="bg-gray-100 p-3 rounded-full mb-2">
+                    <Clock className="h-6 w-6 text-booba-yellow" />
+                  </div>
+                  <div className="text-2xl font-bold">98%</div>
+                  <div className="text-sm text-gray-500">On-Time Rate</div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+      
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Ride History</CardTitle>
+          <CardDescription>Your recent completed rides</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="rounded-md border">
+            <div className="relative w-full overflow-auto">
+              <table className="w-full caption-bottom text-sm">
+                <thead>
+                  <tr className="border-b bg-gray-50">
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Date</th>
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Passenger</th>
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Route</th>
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Vehicle Type</th>
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Fare</th>
+                    <th className="h-10 px-4 text-left font-medium text-gray-500">Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { date: 'May 2, 2025', passenger: 'John D.', route: '123 Main St to Airport', type: 'Standard Sedan', fare: '$24.50', rating: 5 },
+                    { date: 'May 2, 2025', passenger: 'Sarah M.', route: '45 Park Ave to Downtown', type: 'Premium SUV', fare: '$35.00', rating: 4 },
+                    { date: 'May 1, 2025', passenger: 'Michael B.', route: 'Airport to 78 West St', type: 'Premium Sedan', fare: '$42.75', rating: 5 },
+                    { date: 'May 1, 2025', passenger: 'Lisa K.', route: 'Downtown to Westfield Mall', type: 'Standard Sedan', fare: '$18.25', rating: 5 },
+                    { date: 'Apr 30, 2025', passenger: 'Robert J.', route: '890 Ocean Ave to University', type: 'Standard SUV', fare: '$22.00', rating: 4 },
+                  ].map((ride, index) => (
+                    <tr key={index} className="border-b">
+                      <td className="p-3">{ride.date}</td>
+                      <td className="p-3">{ride.passenger}</td>
+                      <td className="p-3">{ride.route}</td>
+                      <td className="p-3">{ride.type}</td>
+                      <td className="p-3">{ride.fare}</td>
+                      <td className="p-3">
+                        <div className="flex">
+                          {Array.from({ length: ride.rating }).map((_, i) => (
+                            <Star key={i} className="h-4 w-4 text-booba-yellow fill-booba-yellow" />
+                          ))}
+                          {Array.from({ length: 5 - ride.rating }).map((_, i) => (
+                            <Star key={i} className="h-4 w-4 text-gray-300" />
+                          ))}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="flex justify-center mt-4">
+            <Button variant="outline">View All Rides</Button>
+          </div>
+        </CardContent>
+      </Card>
     </DashboardLayout>
   );
 };

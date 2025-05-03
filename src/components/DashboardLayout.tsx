@@ -14,6 +14,8 @@ import {
   MapPin,
   DollarSign,
   Map,
+  CreditCard,
+  Users,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -30,18 +32,21 @@ const DashboardLayout = ({ children, userType }: DashboardLayoutProps) => {
     ? [
         { name: 'Dashboard', href: '/admin', icon: Home },
         { name: 'Users', href: '/admin/users', icon: User },
-        { name: 'Drivers', href: '/admin/drivers', icon: User },
+        { name: 'Drivers', href: '/admin/drivers', icon: Users },
         { name: 'Taxi Types', href: '/admin/taxi-types', icon: Car },
+        { name: 'Rental Vehicles', href: '/admin/rental-vehicles', icon: Car },
         { name: 'Fare Settings', href: '/admin/fare-settings', icon: DollarSign },
         { name: 'Geofencing', href: '/admin/geofencing', icon: Map },
         { name: 'Bookings', href: '/admin/bookings', icon: Bell },
+        { name: 'Payment Settings', href: '/admin/payment-settings', icon: CreditCard },
         { name: 'Settings', href: '/admin/settings', icon: Settings },
       ]
     : [
         { name: 'Dashboard', href: '/driver', icon: Home },
         { name: 'My Profile', href: '/driver/profile', icon: User },
         { name: 'My Rides', href: '/driver/rides', icon: Car },
-        { name: 'Earnings', href: '/driver/earnings', icon: Bell },
+        { name: 'Earnings', href: '/driver/earnings', icon: DollarSign },
+        { name: 'Bank Details', href: '/driver/bank-details', icon: CreditCard },
         { name: 'Settings', href: '/driver/settings', icon: Settings },
       ];
 
