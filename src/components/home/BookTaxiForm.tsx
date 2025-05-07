@@ -26,7 +26,7 @@ const BookTaxiForm = () => {
     // Find the selected taxi type
     const taxiType = taxiTypes.find(type => type.id === selectedTaxiType);
     
-    toast.success(`Taxi booking initiated for ${taxiType?.name}! Redirecting to booking page...`);
+    toast.success(`Chauffeur booking initiated for ${taxiType?.name}! Redirecting to booking page...`);
     // In a real app, you would redirect to the booking page or proceed with the booking
   };
   
@@ -91,7 +91,7 @@ const BookTaxiForm = () => {
       </div>
       
       <div className="space-y-2">
-        <label className="text-sm font-medium">Taxi Type</label>
+        <label className="text-sm font-medium">Transport Type</label>
         <RadioGroup 
           value={selectedTaxiType} 
           onValueChange={setSelectedTaxiType}
@@ -100,7 +100,7 @@ const BookTaxiForm = () => {
           {taxiTypes.map((type) => (
             <div 
               key={type.id} 
-              className={`border rounded-md p-3 hover:border-booba-yellow cursor-pointer transition-colors ${selectedTaxiType === type.id ? 'border-booba-yellow bg-booba-yellow/10' : ''}`}
+              className={`border rounded-md p-3 hover:border-fleet-red cursor-pointer transition-colors ${selectedTaxiType === type.id ? 'border-fleet-red bg-fleet-red/10' : ''}`}
               onClick={() => setSelectedTaxiType(type.id)}
             >
               <RadioGroupItem value={type.id} id={type.id} className="sr-only" />
@@ -119,9 +119,9 @@ const BookTaxiForm = () => {
       
       <Button 
         type="submit" 
-        className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90"
+        className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
       >
-        Find Taxi
+        Find Chauffeur
       </Button>
     </form>
   );

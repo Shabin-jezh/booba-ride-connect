@@ -88,7 +88,7 @@ const RentCarForm = () => {
       
       <Button 
         type="submit" 
-        className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90"
+        className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
       >
         Find Cars
       </Button>

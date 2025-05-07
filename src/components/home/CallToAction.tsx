@@ -16,7 +16,7 @@ const CallToAction = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/chauffeur">
-            <Button className="bg-fleet-red text-white hover:bg-fleet-red/90 text-lg px-6 py-6">
+            <Button className="bg-gradient-to-r from-fleet-red to-fleet-accent text-white hover:opacity-90 text-lg px-6 py-6">
               Book a Chauffeur
             </Button>
           </Link>
