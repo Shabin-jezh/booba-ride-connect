@@ -14,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 47 100% 58%;
-    --primary-foreground: 0 0% 20%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -31,18 +31,18 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 47 100% 58%;
+    --ring: 0 72% 51%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 47 100% 58%;
-    --sidebar-primary-foreground: 0 0% 20%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 20%;
     --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 47 100% 58%;
+    --sidebar-ring: 0 72% 51%;
   }
 
   .dark {
@@ -55,8 +55,8 @@
     --popover: 0 0% 20%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 47 100% 58%;
-    --primary-foreground: 0 0% 20%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 30%;
     --secondary-foreground: 0 0% 100%;
@@ -72,16 +72,16 @@
 
     --border: 0 0% 30%;
     --input: 0 0% 30%;
-    --ring: 47 100% 58%;
+    --ring: 0 72% 51%;
 
     --sidebar-background: 0 0% 20%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 47 100% 58%;
-    --sidebar-primary-foreground: 0 0% 20%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 25%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 30%;
-    --sidebar-ring: 47 100% 58%;
+    --sidebar-ring: 0 72% 51%;
   }
 }
 
@@ -97,16 +97,16 @@
 }
 
 @layer components {
-  .booba-gradient {
-    @apply bg-gradient-to-r from-booba-yellow to-booba-yellow-light;
+  .fleet-gradient {
+    @apply bg-gradient-to-r from-fleet-red to-fleet-accent;
   }
   
   .btn-primary {
-    @apply bg-booba-yellow text-booba-dark font-medium py-2 px-4 rounded-md hover:bg-opacity-90 transition-all;
+    @apply bg-fleet-red text-white font-medium py-2 px-4 rounded-md hover:bg-opacity-90 transition-all;
   }
   
   .btn-secondary {
-    @apply bg-booba-dark text-white font-medium py-2 px-4 rounded-md hover:bg-opacity-90 transition-all;
+    @apply bg-fleet-dark text-white font-medium py-2 px-4 rounded-md hover:bg-opacity-90 transition-all;
   }
   
   .card-hover {

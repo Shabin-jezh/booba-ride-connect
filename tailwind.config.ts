@@ -25,12 +25,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				booba: {
-					yellow: '#FFDA29',
+				fleet: {
+					red: '#ea384c',
 					dark: '#333333',
 					light: '#FFFFFF',
 					gray: '#F2F2F2',
-					'yellow-light': '#FFEDA0'
+					accent: '#F97316'
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',

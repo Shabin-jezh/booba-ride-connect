@@ -50,8 +50,8 @@ const Navbar = () => {
 
 const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
   const baseClass = mobile 
-    ? "px-2 py-1 text-booba-dark hover:text-booba-yellow transition-colors" 
-    : "text-booba-dark hover:text-booba-yellow transition-colors";
+    ? "px-2 py-1 text-fleet-dark hover:text-fleet-red transition-colors" 
+    : "text-fleet-dark hover:text-fleet-red transition-colors";
   
   return (
     <>
@@ -72,7 +72,7 @@ const AuthButtons = ({ mobile = false }: { mobile?: boolean }) => {
           <Button variant="outline" className="w-full">Login</Button>
         </Link>
         <Link to="/register" className="w-full">
-          <Button className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90">Register</Button>
+          <Button className="w-full bg-fleet-red text-white hover:bg-fleet-red/90">Register</Button>
         </Link>
       </>
     );
@@ -84,7 +84,7 @@ const AuthButtons = ({ mobile = false }: { mobile?: boolean }) => {
         <Button variant="outline">Login</Button>
       </Link>
       <Link to="/register">
-        <Button className="bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90">Register</Button>
+        <Button className="bg-fleet-red text-white hover:bg-fleet-red/90">Register</Button>
       </Link>
     </>
   );

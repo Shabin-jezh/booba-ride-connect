@@ -73,14 +73,14 @@ const DashboardLayout = ({ children, userType }: DashboardLayoutProps) => {
                 className={cn(
                   "flex items-center px-4 py-3 text-sm font-medium rounded-md group transition-colors",
                   location.pathname === item.href
-                    ? "bg-booba-yellow/20 text-booba-dark"
+                    ? "bg-fleet-red/20 text-fleet-red"
                     : "text-gray-600 hover:bg-gray-100"
                 )}
               >
                 <item.icon className={cn(
                   "mr-3 h-5 w-5",
                   location.pathname === item.href
-                    ? "text-booba-dark"
+                    ? "text-fleet-red"
                     : "text-gray-500"
                 )} />
                 {item.name}
@@ -112,7 +112,7 @@ const DashboardLayout = ({ children, userType }: DashboardLayoutProps) => {
               <Button variant="ghost" size="icon">
                 <Bell className="h-5 w-5" />
               </Button>
-              <div className="h-8 w-8 rounded-full bg-booba-yellow flex items-center justify-center text-booba-dark">
+              <div className="h-8 w-8 rounded-full bg-fleet-red flex items-center justify-center text-white">
                 <span className="font-medium text-sm">
                   {userType === 'admin' ? 'A' : 'D'}
                 </span>

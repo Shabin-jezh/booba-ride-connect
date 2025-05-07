@@ -56,7 +56,7 @@ const Login = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <label htmlFor="password" className="text-sm font-medium">Password</label>
-                    <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                    <Link to="/forgot-password" className="text-sm text-fleet-red hover:underline">
                       Forgot password?
                     </Link>
                   </div>
@@ -90,7 +90,7 @@ const Login = () => {
                   </RadioGroup>
                 </div>
                 
-                <Button type="submit" className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90">
+                <Button type="submit" className="w-full bg-fleet-red text-white hover:bg-fleet-red/90">
                   Log in
                 </Button>
               </form>
@@ -98,7 +98,7 @@ const Login = () => {
             <CardFooter className="flex flex-col space-y-4">
               <div className="text-sm text-center">
                 Don't have an account?{" "}
-                <Link to="/register" className="text-blue-600 hover:underline">
+                <Link to="/register" className="text-fleet-red hover:underline">
                   Sign up
                 </Link>
               </div>
