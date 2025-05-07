@@ -21,7 +21,7 @@ const CallToAction = () => {
             </Button>
           </Link>
           <Link to="/rental">
-            <Button variant="outline" className="border-fleet-dark text-fleet-dark hover:bg-fleet-dark/10 text-lg px-6 py-6">
+            <Button variant="outline" className="border-fleet-dark border-2 bg-white/50 text-fleet-dark hover:bg-fleet-dark/10 text-lg px-6 py-6">
               Rent a Car
             </Button>
           </Link>

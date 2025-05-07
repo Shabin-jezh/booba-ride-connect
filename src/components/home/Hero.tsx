@@ -27,7 +27,7 @@ const Hero = () => {
                 </Button>
               </Link>
               <Link to="/rental">
-                <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-6 py-6">
+                <Button variant="outline" className="border-white border-2 text-white hover:bg-white/20 text-lg px-6 py-6">
                   Rent a Car
                 </Button>
               </Link>
