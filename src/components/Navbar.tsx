@@ -56,8 +56,8 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
   return (
     <>
       <Link to="/" className={baseClass}>Home</Link>
-      <Link to="/taxi" className={baseClass}>Book Taxi</Link>
-      <Link to="/rental" className={baseClass}>Rent Car</Link>
+      <Link to="/chauffeur" className={baseClass}>Book Chauffeur</Link>
+      <Link to="/hourly" className={baseClass}>Hourly</Link>
       <Link to="/about" className={baseClass}>About</Link>
       <Link to="/contact" className={baseClass}>Contact</Link>
     </>

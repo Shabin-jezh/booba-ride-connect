@@ -11,18 +11,18 @@ const CallToAction = () => {
           Ready to Experience Our Service?
         </h2>
         <p className="text-gray-700 max-w-2xl mx-auto mb-8">
-          Whether you need a taxi right now or want to rent a car for your next trip,
+          Whether you need a chauffeur right now or want to rent a car hourly for your next trip,
           we've got you covered. Join our satisfied customers today!
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link to="/taxi">
+          <Link to="/chauffeur">
             <Button className="bg-fleet-red text-white hover:bg-fleet-red/90 text-lg px-6 py-6">
-              Book a Taxi
+              Book a Chauffeur
             </Button>
           </Link>
-          <Link to="/rental">
+          <Link to="/hourly">
             <Button variant="outline" className="border-fleet-dark border-2 bg-white/50 text-fleet-dark hover:bg-fleet-dark/10 text-lg px-6 py-6">
-              Rent a Car
+              Hourly
             </Button>
           </Link>
         </div>

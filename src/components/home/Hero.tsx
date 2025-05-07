@@ -17,18 +17,18 @@ const Hero = () => {
               Your Reliable Ride & Rental Solution
             </h1>
             <p className="text-white/90 text-lg mb-8 max-w-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Book a taxi for your immediate travel needs or rent a car for longer trips.
+              Book a chauffeur for your immediate travel needs or rent a car hourly for longer trips.
               First Class Fleet offers comfort, reliability, and affordability.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Link to="/taxi">
+              <Link to="/chauffeur">
                 <Button className="bg-white text-fleet-red hover:bg-white/90 text-lg px-6 py-6">
-                  Book a Taxi
+                  Book a Chauffeur
                 </Button>
               </Link>
-              <Link to="/rental">
+              <Link to="/hourly">
                 <Button variant="outline" className="border-white border-2 text-white hover:bg-white/20 text-lg px-6 py-6">
-                  Rent a Car
+                  Hourly
                 </Button>
               </Link>
             </div>
@@ -38,8 +38,8 @@ const Hero = () => {
             <Card className="p-6 shadow-lg">
               <Tabs defaultValue="taxi">
                 <TabsList className="grid grid-cols-2 mb-6">
-                  <TabsTrigger value="taxi">Book a Taxi</TabsTrigger>
-                  <TabsTrigger value="rental">Rent a Car</TabsTrigger>
+                  <TabsTrigger value="taxi">Book a Chauffeur</TabsTrigger>
+                  <TabsTrigger value="rental">Hourly</TabsTrigger>
                 </TabsList>
                 <TabsContent value="taxi">
                   <BookTaxiForm />
