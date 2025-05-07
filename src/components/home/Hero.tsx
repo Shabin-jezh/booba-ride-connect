@@ -9,25 +9,25 @@ import RentCarForm from './RentCarForm';
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-br from-booba-yellow to-booba-yellow-light pt-16 pb-20 md:pt-24 md:pb-28">
+    <div className="bg-gradient-to-br from-fleet-red/90 to-fleet-accent pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-10 lg:mb-0">
-            <h1 className="text-booba-dark text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
               Your Reliable Ride & Rental Solution
             </h1>
-            <p className="text-gray-700 text-lg mb-8 max-w-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-white/90 text-lg mb-8 max-w-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Book a taxi for your immediate travel needs or rent a car for longer trips.
-              Booba Taxi offers comfort, reliability, and affordability.
+              First Class Fleet offers comfort, reliability, and affordability.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Link to="/taxi">
-                <Button className="bg-booba-dark text-white hover:bg-booba-dark/90 text-lg px-6 py-6">
+                <Button className="bg-white text-fleet-red hover:bg-white/90 text-lg px-6 py-6">
                   Book a Taxi
                 </Button>
               </Link>
               <Link to="/rental">
-                <Button variant="outline" className="border-booba-dark text-booba-dark hover:bg-booba-dark/10 text-lg px-6 py-6">
+                <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-6 py-6">
                   Rent a Car
                 </Button>
               </Link>
