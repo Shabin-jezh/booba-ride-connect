@@ -28,6 +28,9 @@ import DriverSettings from "./pages/DriverSettings";
 import MyAccount from "./pages/MyAccount";
 import MyBookings from "./pages/MyBookings";
 import NotFound from "./pages/NotFound";
+import FAQ from "./pages/FAQ";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +48,9 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/drivers" element={<AdminDrivers />} />

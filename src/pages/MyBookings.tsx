@@ -7,28 +7,29 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { FileText, Download, Calendar, Map, Clock, Car } from 'lucide-react';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 // Sample data for bookings
 const upcomingBookings = [
   {
     id: 'BK-1001',
     type: 'Chauffeur',
-    status: 'Confirmed',
+    status: 'Initiated',
     date: new Date(2025, 5, 15),
-    pickup: '123 Main St, New York',
-    dropoff: 'JFK Airport, Terminal 4',
+    pickup: '123 Main St, Dubai',
+    dropoff: 'Dubai International Airport, Terminal 3',
     vehicle: 'Mercedes E-Class',
-    amount: '$78.50',
+    amount: 'AED 275.00',
   },
   {
     id: 'BK-1003',
     type: 'Rental',
     status: 'Pending',
     date: new Date(2025, 5, 20),
-    pickup: '456 Park Ave, New York',
+    pickup: 'Burj Khalifa, Dubai',
     dropoff: 'N/A (Rental)',
     vehicle: 'BMW 3 Series',
-    amount: '$145.00',
+    amount: 'AED 500.00',
   },
 ];
 
@@ -38,30 +39,30 @@ const pastBookings = [
     type: 'Chauffeur',
     status: 'Completed',
     date: new Date(2025, 4, 28),
-    pickup: '789 Broadway, New York',
-    dropoff: 'Newark Airport, Terminal C',
-    vehicle: 'Toyota Camry',
-    amount: '$62.75',
+    pickup: 'Dubai Mall, Dubai',
+    dropoff: 'Abu Dhabi Airport, Terminal 1',
+    vehicle: 'Lexus ES',
+    amount: 'AED 450.00',
   },
   {
     id: 'BK-0972',
     type: 'Rental',
     status: 'Completed',
     date: new Date(2025, 4, 15),
-    pickup: '123 Main St, New York',
+    pickup: 'Marina Mall, Dubai',
     dropoff: 'N/A (Rental)',
-    vehicle: 'Hyundai Elantra',
-    amount: '$110.25',
+    vehicle: 'Infiniti Q50',
+    amount: 'AED 350.00',
   },
   {
     id: 'BK-0964',
     type: 'Chauffeur',
     status: 'Cancelled',
     date: new Date(2025, 4, 10),
-    pickup: '555 5th Ave, New York',
-    dropoff: 'LaGuardia Airport, Terminal B',
-    vehicle: 'Toyota Corolla',
-    amount: '$0.00',
+    pickup: 'Mall of Emirates, Dubai',
+    dropoff: 'Sharjah International Airport',
+    vehicle: 'Toyota Camry',
+    amount: 'AED 0.00',
   },
 ];
 
@@ -75,7 +76,7 @@ const BookingCard = ({ booking }: { booking: typeof upcomingBookings[0] }) => {
         </div>
         <Badge className={`
           ${booking.status === 'Completed' ? 'bg-green-100 text-green-800' : 
-            booking.status === 'Confirmed' ? 'bg-blue-100 text-blue-800' : 
+            booking.status === 'Initiated' ? 'bg-blue-100 text-blue-800' : 
             booking.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : 
             'bg-red-100 text-red-800'}
         `}>
@@ -125,9 +126,11 @@ const BookingCard = ({ booking }: { booking: typeof upcomingBookings[0] }) => {
               <p className="text-lg font-bold">{booking.amount}</p>
             </div>
             <div className="space-x-2">
-              <Button variant="outline" size="sm">
-                <FileText className="h-4 w-4 mr-2" />
-                Details
+              <Button variant="outline" size="sm" asChild>
+                <Link to={`/my-bookings/${booking.id}`}>
+                  <FileText className="h-4 w-4 mr-2" />
+                  Details
+                </Link>
               </Button>
               {booking.status !== 'Cancelled' && (
                 <Button variant="outline" size="sm">

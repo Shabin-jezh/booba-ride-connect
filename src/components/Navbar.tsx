@@ -83,6 +83,7 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
       </Dialog>
       <Link to="/about" className={baseClass}>About</Link>
       <Link to="/contact" className={baseClass}>Contact</Link>
+      <Link to="/faq" className={baseClass}>FAQ</Link>
     </>
   );
 };

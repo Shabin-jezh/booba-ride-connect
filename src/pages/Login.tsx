@@ -8,14 +8,29 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { toast } from 'sonner';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const Login = () => {
   const [userType, setUserType] = useState('customer');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitPhone = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast.success("OTP sent to your mobile number!");
+    setIsDialogOpen(true);
+    // In a real app, this would send OTP to the provided phone number
+  };
+  
+  const handleVerifyOTP = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.success("Login successful!");
+    setIsDialogOpen(false);
     
     // Navigate based on user type
     switch (userType) {
@@ -39,31 +54,17 @@ const Login = () => {
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl font-bold">Log in</CardTitle>
               <CardDescription>
-                Enter your email and password to access your account
+                Enter your mobile number to receive a login code
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmitPhone} className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email</label>
+                  <label htmlFor="phone" className="text-sm font-medium">Phone number</label>
                   <Input
-                    id="email"
-                    type="email"
-                    placeholder="name@example.com"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <label htmlFor="password" className="text-sm font-medium">Password</label>
-                    <Link to="/forgot-password" className="text-sm text-fleet-red hover:underline">
-                      Forgot password?
-                    </Link>
-                  </div>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
+                    id="phone"
+                    type="tel"
+                    placeholder="+971 50 123 4567"
                     required
                   />
                 </div>
@@ -91,30 +92,52 @@ const Login = () => {
                 </div>
                 
                 <Button type="submit" className="w-full bg-fleet-red text-white hover:bg-fleet-red/90">
-                  Log in
+                  Send login code
                 </Button>
               </form>
             </CardContent>
-            <CardFooter className="flex flex-col space-y-4">
+            <CardFooter className="flex justify-center">
               <div className="text-sm text-center">
                 Don't have an account?{" "}
                 <Link to="/register" className="text-fleet-red hover:underline">
                   Sign up
                 </Link>
               </div>
-              <div className="flex items-center">
-                <div className="flex-1 border-t border-gray-200"></div>
-                <span className="px-4 text-sm text-gray-500">or login with</span>
-                <div className="flex-1 border-t border-gray-200"></div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <Button variant="outline" className="w-full">Google</Button>
-                <Button variant="outline" className="w-full">Facebook</Button>
-              </div>
             </CardFooter>
           </Card>
         </div>
       </div>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Enter verification code</DialogTitle>
+            <DialogDescription>
+              We've sent a 6-digit code to your mobile number. Please enter it below.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleVerifyOTP} className="space-y-4">
+            <div className="flex justify-center my-4">
+              <InputOTP maxLength={6} className="gap-2">
+                <InputOTPGroup>
+                  <InputOTPSlot index={0} />
+                  <InputOTPSlot index={1} />
+                  <InputOTPSlot index={2} />
+                  <InputOTPSlot index={3} />
+                  <InputOTPSlot index={4} />
+                  <InputOTPSlot index={5} />
+                </InputOTPGroup>
+              </InputOTP>
+            </div>
+            <div className="text-center text-sm">
+              Didn't receive a code? <button type="button" className="text-fleet-red hover:underline">Resend code</button>
+            </div>
+            <div className="flex justify-end">
+              <Button type="submit">Verify & Log in</Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
