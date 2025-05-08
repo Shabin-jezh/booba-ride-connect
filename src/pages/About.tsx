@@ -1,115 +1,86 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
-import { info } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Info } from 'lucide-react';
 
 const About = () => {
   return (
     <Layout>
       <div className="bg-gradient-to-r from-fleet-red to-fleet-accent py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center justify-center">
-            <info className="mr-2 h-8 w-8" />
-            About First Class Fleet
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
           <p className="text-white/90 text-lg max-w-2xl mx-auto">
-            Your trusted partner for premium transportation solutions since 2010.
+            Learn about our commitment to excellence in chauffeur services and hourly car rentals.
           </p>
         </div>
       </div>
       
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h2 className="text-3xl font-bold text-fleet-dark mb-4">Our Story</h2>
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
+          <div className="md:w-1/2">
+            <h2 className="text-3xl font-bold text-fleet-dark mb-6 flex items-center">
+              <Info className="mr-2 h-6 w-6" />
+              Our Story
+            </h2>
             <p className="text-gray-700 mb-4">
-              First Class Fleet was founded with a simple mission: to provide exceptional transportation services that prioritize comfort, reliability, and customer satisfaction.
+              First Class Fleet began with a vision to transform the transportation industry by providing exceptional service that goes beyond just getting from point A to point B.
             </p>
             <p className="text-gray-700 mb-4">
-              What began as a small operation with just three vehicles has grown into a comprehensive transportation service with a diverse fleet of premium vehicles and professional chauffeurs serving thousands of satisfied customers.
+              Founded in 2015, we started with just three vehicles and a commitment to customer satisfaction. Today, we're proud to have expanded our fleet to over 50 vehicles while maintaining our dedication to quality service.
             </p>
             <p className="text-gray-700">
-              Today, we continue to uphold our founding principles while embracing innovation and sustainability in our operations.
+              Our mission remains unchanged: to provide reliable, comfortable, and affordable transportation solutions for all our customers' needs, whether it's a quick ride across town or a multi-day rental.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg">
-            <img 
-              src="/lovable-uploads/99f9ce6d-a760-4be6-9f4e-a7b4f21334c2.png" 
-              alt="First Class Fleet Team" 
-              className="rounded-lg shadow-lg w-full"
-            />
-          </div>
-        </div>
-        
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-fleet-dark mb-6 text-center">Our Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Excellence</h3>
-              <p className="text-gray-700">
-                We strive for excellence in every aspect of our service, from vehicle maintenance to customer interactions.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Reliability</h3>
-              <p className="text-gray-700">
-                Punctuality and dependability are the cornerstones of our business. We're there when you need us.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Innovation</h3>
-              <p className="text-gray-700">
-                We continuously adopt new technologies and practices to enhance the customer experience.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Safety</h3>
-              <p className="text-gray-700">
-                The safety of our customers and staff is our highest priority. All vehicles undergo rigorous safety checks.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Sustainability</h3>
-              <p className="text-gray-700">
-                We're committed to reducing our environmental footprint through eco-friendly practices and vehicle options.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-fleet-dark mb-2">Integrity</h3>
-              <p className="text-gray-700">
-                We conduct business with honesty, transparency, and respect for all our stakeholders.
-              </p>
+          <div className="md:w-1/2">
+            <div className="bg-gray-200 h-80 rounded-lg flex items-center justify-center">
+              <span className="text-gray-400">Company Image</span>
             </div>
           </div>
         </div>
         
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-fleet-dark mb-6 text-center">Our Team</h2>
-          <p className="text-gray-700 text-center max-w-3xl mx-auto mb-8">
-            Our success is driven by our dedicated team of professionals who are passionate about providing exceptional service.
+          <h2 className="text-3xl font-bold text-fleet-dark mb-8 text-center">Our Values</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="w-12 h-12 bg-fleet-red/10 rounded-full flex items-center justify-center mb-4">
+                <span className="text-fleet-red text-xl">✓</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Reliability</h3>
+              <p className="text-gray-600">
+                We understand the importance of punctuality and dependability when it comes to transportation services.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="w-12 h-12 bg-fleet-red/10 rounded-full flex items-center justify-center mb-4">
+                <span className="text-fleet-red text-xl">★</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Quality</h3>
+              <p className="text-gray-600">
+                From our vehicles to our chauffeurs, we maintain the highest standards of quality in everything we do.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="w-12 h-12 bg-fleet-red/10 rounded-full flex items-center justify-center mb-4">
+                <span className="text-fleet-red text-xl">♥</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Customer Focus</h3>
+              <p className="text-gray-600">
+                Your satisfaction is our priority. We go above and beyond to ensure an exceptional experience.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-fleet-dark mb-6">Ready to Experience Our Service?</h2>
+          <p className="text-gray-700 mb-8 max-w-2xl mx-auto">
+            Join our thousands of satisfied customers and discover why we're the preferred choice for transportation services.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4"></div>
-              <h3 className="text-xl font-bold text-fleet-dark">John Doe</h3>
-              <p className="text-fleet-red">CEO & Founder</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4"></div>
-              <h3 className="text-xl font-bold text-fleet-dark">Jane Smith</h3>
-              <p className="text-fleet-red">Operations Director</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4"></div>
-              <h3 className="text-xl font-bold text-fleet-dark">Michael Brown</h3>
-              <p className="text-fleet-red">Fleet Manager</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4"></div>
-              <h3 className="text-xl font-bold text-fleet-dark">Sarah Johnson</h3>
-              <p className="text-fleet-red">Customer Relations</p>
-            </div>
-          </div>
+          <Button className="bg-gradient-to-r from-fleet-red to-fleet-accent text-white hover:opacity-90 px-8 py-6 text-lg">
+            Book a Chauffeur
+          </Button>
         </div>
       </div>
     </Layout>

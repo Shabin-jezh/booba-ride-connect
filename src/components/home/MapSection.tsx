@@ -24,7 +24,7 @@ const MapSection = () => {
     <section className="py-16 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-booba-dark mb-4">Fare Estimate</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-fleet-dark mb-4">Fare Estimate</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Get a quick estimate of your fare before booking your ride.
           </p>
@@ -79,7 +79,7 @@ const MapSection = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-booba-yellow text-booba-dark hover:bg-booba-yellow/90"
+                    className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
                   >
                     Calculate Fare
                   </Button>

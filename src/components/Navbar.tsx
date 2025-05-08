@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import BookTaxiForm from './home/BookTaxiForm';
+import RentCarForm from './home/RentCarForm';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-white/20">
+    <nav className="bg-white/70 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-white/20">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <Logo />
@@ -56,8 +59,28 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
   return (
     <>
       <Link to="/" className={baseClass}>Home</Link>
-      <Link to="/chauffeur" className={baseClass}>Book Chauffeur</Link>
-      <Link to="/hourly" className={baseClass}>Hourly</Link>
+      <Dialog>
+        <DialogTrigger asChild>
+          <button className={baseClass}>Book Chauffeur</button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <div className="p-4">
+            <h3 className="text-xl font-bold mb-4">Book a Chauffeur</h3>
+            <BookTaxiForm />
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog>
+        <DialogTrigger asChild>
+          <button className={baseClass}>Hourly</button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <div className="p-4">
+            <h3 className="text-xl font-bold mb-4">Hourly Rental</h3>
+            <RentCarForm />
+          </div>
+        </DialogContent>
+      </Dialog>
       <Link to="/about" className={baseClass}>About</Link>
       <Link to="/contact" className={baseClass}>Contact</Link>
     </>

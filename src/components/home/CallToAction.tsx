@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import BookTaxiForm from './BookTaxiForm';
 
 const CallToAction = () => {
   return (
@@ -14,17 +15,20 @@ const CallToAction = () => {
           Whether you need a chauffeur right now or want to rent a car hourly for your next trip,
           we've got you covered. Join our satisfied customers today!
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link to="/chauffeur">
-            <Button className="bg-gradient-to-r from-fleet-red to-fleet-accent text-white hover:opacity-90 text-lg px-6 py-6">
-              Book a Chauffeur
-            </Button>
-          </Link>
-          <Link to="/hourly">
-            <Button variant="outline" className="border-fleet-dark border-2 bg-white/50 text-fleet-dark hover:bg-fleet-dark/10 text-lg px-6 py-6">
-              Hourly
-            </Button>
-          </Link>
+        <div className="flex flex-wrap justify-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="bg-gradient-to-r from-fleet-red to-fleet-accent text-white hover:opacity-90 text-lg px-6 py-6">
+                Book a Chauffeur
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-4">Book a Chauffeur</h3>
+                <BookTaxiForm />
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>

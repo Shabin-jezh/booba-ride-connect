@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import BookTaxiForm from './BookTaxiForm';
 import RentCarForm from './RentCarForm';
 
@@ -21,16 +21,19 @@ const Hero = () => {
               First Class Fleet offers comfort, reliability, and affordability.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Link to="/chauffeur">
-                <Button className="bg-white text-fleet-red hover:bg-white/90 text-lg px-6 py-6">
-                  Book a Chauffeur
-                </Button>
-              </Link>
-              <Link to="/hourly">
-                <Button variant="outline" className="border-white border-2 text-white hover:bg-white/20 text-lg px-6 py-6">
-                  Hourly
-                </Button>
-              </Link>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="bg-white text-fleet-red hover:bg-white/90 text-lg px-6 py-6">
+                    Book a Chauffeur
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold mb-4">Book a Chauffeur</h3>
+                    <BookTaxiForm />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           
