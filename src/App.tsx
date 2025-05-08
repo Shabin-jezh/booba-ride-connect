@@ -15,10 +15,18 @@ import AdminFareSettings from "./pages/AdminFareSettings";
 import AdminGeofencing from "./pages/AdminGeofencing";
 import AdminRentalVehicles from "./pages/AdminRentalVehicles";
 import AdminPaymentSettings from "./pages/AdminPaymentSettings";
+import AdminUsers from "./pages/AdminUsers";
+import AdminDrivers from "./pages/AdminDrivers";
+import AdminBookings from "./pages/AdminBookings";
+import AdminSettings from "./pages/AdminSettings";
 import DriverDashboard from "./pages/DriverDashboard";
 import DriverBankDetails from "./pages/DriverBankDetails";
-import BookChauffeur from "./pages/BookChauffeur";
-import HourlyRental from "./pages/HourlyRental";
+import DriverProfile from "./pages/DriverProfile";
+import DriverRides from "./pages/DriverRides";
+import DriverEarnings from "./pages/DriverEarnings";
+import DriverSettings from "./pages/DriverSettings";
+import MyAccount from "./pages/MyAccount";
+import MyBookings from "./pages/MyBookings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,16 +43,24 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/book-chauffeur" element={<BookChauffeur />} />
-          <Route path="/hourly-rental" element={<HourlyRental />} />
+          <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/drivers" element={<AdminDrivers />} />
           <Route path="/admin/taxi-types" element={<AdminTaxiTypes />} />
+          <Route path="/admin/vehicles" element={<AdminRentalVehicles />} />
           <Route path="/admin/fare-settings" element={<AdminFareSettings />} />
           <Route path="/admin/geofencing" element={<AdminGeofencing />} />
-          <Route path="/admin/rental-vehicles" element={<AdminRentalVehicles />} />
+          <Route path="/admin/bookings" element={<AdminBookings />} />
           <Route path="/admin/payment-settings" element={<AdminPaymentSettings />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/driver" element={<DriverDashboard />} />
+          <Route path="/driver/profile" element={<DriverProfile />} />
+          <Route path="/driver/rides" element={<DriverRides />} />
+          <Route path="/driver/earnings" element={<DriverEarnings />} />
           <Route path="/driver/bank-details" element={<DriverBankDetails />} />
+          <Route path="/driver/settings" element={<DriverSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
