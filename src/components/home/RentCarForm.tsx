@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -7,8 +6,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card } from '@/components/ui/card';
 import { format } from 'date-fns';
-import { Calendar as CalendarIcon, MapPin, CreditCard, Check } from 'lucide-react';
+import { Calendar as CalendarIcon, MapPin, CreditCard, Check, FileText, Book } from 'lucide-react';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 const carCategories = [
   { id: 'economy', name: 'Economy', description: 'Affordable for daily use', price: '$12/hour', emoji: '🚗' },
@@ -37,7 +37,7 @@ const carModels = {
 };
 
 const rentalStatuses = [
-  { id: 'confirmed', label: 'Booking Confirmed', completed: true },
+  { id: 'initiated', label: 'Booking Initiated', completed: true },
   { id: 'processing', label: 'Processing', completed: false },
   { id: 'ready', label: 'Car Ready for Pickup', completed: false },
   { id: 'picked', label: 'Car Picked Up', completed: false },
@@ -96,8 +96,14 @@ const RentCarForm = () => {
         return;
       }
       setStep(5);
-      toast.success('Car rental confirmed! Your vehicle will be ready for pickup.');
+      toast.success('Rental booking initiated! Your request is being processed.');
     }
+  };
+  
+  // Function to handle receipt download
+  const handleDownloadReceipt = () => {
+    toast.success('Receipt downloaded successfully');
+    // In a real app, this would generate and download a PDF receipt
   };
   
   return (
@@ -355,8 +361,8 @@ const RentCarForm = () => {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="h-8 w-8 text-green-600" />
           </div>
-          <h3 className="text-xl font-bold text-green-600 mb-2">Booking Confirmed!</h3>
-          <p className="text-gray-600 mb-4">Your rental car will be ready for pickup.</p>
+          <h3 className="text-xl font-bold text-green-600 mb-2">Booking Initiated!</h3>
+          <p className="text-gray-600 mb-4">Your request is being processed.</p>
           
           <div className="mb-6">
             <ol className="relative border-l border-gray-200 dark:border-gray-700">
@@ -395,13 +401,35 @@ const RentCarForm = () => {
               </div>
             </div>
           </Card>
-          <Button 
-            type="button"
-            onClick={() => setStep(1)} 
-            className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
-          >
-            Book Another Car
-          </Button>
+          
+          <div className="flex flex-col space-y-3">
+            <Button 
+              variant="outline"
+              onClick={handleDownloadReceipt}
+              className="w-full flex items-center justify-center"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Download Payment Receipt
+            </Button>
+            
+            <Link to="/my-bookings" className="w-full">
+              <Button 
+                className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90 flex items-center justify-center"
+              >
+                <Book className="mr-2 h-4 w-4" />
+                View My Bookings
+              </Button>
+            </Link>
+            
+            <Button 
+              type="button"
+              variant="outline"
+              onClick={() => setStep(1)} 
+              className="w-full"
+            >
+              Book Another Car
+            </Button>
+          </div>
         </div>
       )}
     </form>

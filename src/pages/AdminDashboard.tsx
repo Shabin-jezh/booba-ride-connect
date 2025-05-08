@@ -79,7 +79,13 @@ const AdminDashboard = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="revenue" stroke="#FFDA29" activeDot={{ r: 8 }} />
+                <Line 
+                  type="monotone" 
+                  dataKey="revenue" 
+                  stroke="#ea384c" 
+                  strokeWidth={2}
+                  activeDot={{ r: 8 }} 
+                />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -97,7 +103,7 @@ const AdminDashboard = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="bookings" fill="#333333" />
+                <Bar dataKey="bookings" fill="#ea384c" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
