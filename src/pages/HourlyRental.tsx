@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
-import { car } from 'lucide-react';
+import { Car } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import RentCarForm from '@/components/home/RentCarForm';
@@ -22,7 +22,7 @@ const HourlyRental = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
             <h2 className="text-3xl font-bold text-fleet-dark mb-6 flex items-center">
-              <car className="mr-2 h-6 w-6" />
+              <Car className="mr-2 h-6 w-6" />
               Rent a Car by the Hour
             </h2>
             <p className="text-gray-700 mb-8">

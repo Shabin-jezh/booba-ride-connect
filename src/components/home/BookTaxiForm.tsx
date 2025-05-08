@@ -17,9 +17,37 @@ const taxiTypes = [
   { id: 'premium', name: 'Premium', description: 'Luxury vehicles for special occasions', price: '3x', emoji: '🏎️' }
 ];
 
+const carModels = {
+  economy: [
+    { id: 'toyota-corolla', name: 'Toyota Corolla', image: '🚗', description: 'Fuel efficient and reliable' },
+    { id: 'honda-civic', name: 'Honda Civic', image: '🚗', description: 'Compact and comfortable' }
+  ],
+  comfort: [
+    { id: 'toyota-camry', name: 'Toyota Camry', image: '🚕', description: 'Smooth ride with extra legroom' },
+    { id: 'honda-accord', name: 'Honda Accord', image: '🚕', description: 'Balanced comfort and style' }
+  ],
+  suv: [
+    { id: 'toyota-rav4', name: 'Toyota RAV4', image: '🚙', description: 'Spacious with great cargo capacity' },
+    { id: 'ford-explorer', name: 'Ford Explorer', image: '🚙', description: 'Powerful and versatile' }
+  ],
+  premium: [
+    { id: 'mercedes-e', name: 'Mercedes E-Class', image: '🏎️', description: 'Luxury sedan with premium features' },
+    { id: 'rolls-royce', name: 'Rolls Royce', image: '🏎️', description: 'Ultimate luxury experience' }
+  ]
+};
+
+const bookingStatuses = [
+  { id: 'confirmed', label: 'Booking Confirmed', completed: true },
+  { id: 'awaiting', label: 'Awaiting Confirmation', completed: false },
+  { id: 'assigned', label: 'Driver Assigned', completed: false },
+  { id: 'pickup', label: 'Pickup Done', completed: false },
+  { id: 'dropped', label: 'Dropped at Location', completed: false }
+];
+
 const BookTaxiForm = () => {
   const [pickupDate, setPickupDate] = useState<Date | undefined>(new Date());
   const [selectedTaxiType, setSelectedTaxiType] = useState('economy');
+  const [selectedCarModel, setSelectedCarModel] = useState('');
   const [step, setStep] = useState(1);
   const [bookingDetails, setBookingDetails] = useState({
     pickup: '',
@@ -46,13 +74,23 @@ const BookTaxiForm = () => {
       }
       setStep(2);
     } else if (step === 2) {
+      if (!selectedTaxiType) {
+        toast.error('Please select a transport type');
+        return;
+      }
       setStep(3);
     } else if (step === 3) {
+      if (!selectedCarModel) {
+        toast.error('Please select a car model');
+        return;
+      }
+      setStep(4);
+    } else if (step === 4) {
       if (!bookingDetails.cardNumber || !bookingDetails.cardName || !bookingDetails.cardExpiry || !bookingDetails.cardCVC) {
         toast.error('Please fill in all payment details');
         return;
       }
-      setStep(4);
+      setStep(5);
       toast.success('Booking confirmed! Your chauffeur is on the way.');
     }
   };
@@ -131,7 +169,7 @@ const BookTaxiForm = () => {
             type="submit" 
             className="w-full text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
           >
-            Next: Choose Transport
+            Book Chauffeur
           </Button>
         </>
       )}
@@ -178,13 +216,60 @@ const BookTaxiForm = () => {
               type="submit" 
               className="flex-1 text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
             >
+              Next: Choose Car
+            </Button>
+          </div>
+        </>
+      )}
+
+      {step === 3 && (
+        <>
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Available Cars</label>
+            <RadioGroup 
+              value={selectedCarModel} 
+              onValueChange={setSelectedCarModel}
+              className="space-y-3"
+            >
+              {carModels[selectedTaxiType as keyof typeof carModels].map((car) => (
+                <div 
+                  key={car.id} 
+                  className={`border rounded-md p-3 hover:border-fleet-red cursor-pointer transition-colors ${selectedCarModel === car.id ? 'border-fleet-red bg-fleet-red/10' : ''}`}
+                  onClick={() => setSelectedCarModel(car.id)}
+                >
+                  <RadioGroupItem value={car.id} id={car.id} className="sr-only" />
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{car.image}</span>
+                    <div>
+                      <h4 className="font-medium">{car.name}</h4>
+                      <p className="text-sm text-gray-500">{car.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+          
+          <div className="flex gap-2">
+            <Button 
+              type="button"
+              variant="outline" 
+              className="flex-1"
+              onClick={() => setStep(2)}
+            >
+              Back
+            </Button>
+            <Button 
+              type="submit" 
+              className="flex-1 text-white font-medium bg-gradient-to-r from-fleet-red to-fleet-accent hover:opacity-90"
+            >
               Next: Payment
             </Button>
           </div>
         </>
       )}
       
-      {step === 3 && (
+      {step === 4 && (
         <>
           <div className="space-y-4">
             <h3 className="font-medium">Payment Details</h3>
@@ -245,7 +330,7 @@ const BookTaxiForm = () => {
               type="button"
               variant="outline" 
               className="flex-1"
-              onClick={() => setStep(2)}
+              onClick={() => setStep(3)}
             >
               Back
             </Button>
@@ -259,13 +344,25 @@ const BookTaxiForm = () => {
         </>
       )}
       
-      {step === 4 && (
+      {step === 5 && (
         <div className="text-center py-4">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="h-8 w-8 text-green-600" />
           </div>
           <h3 className="text-xl font-bold text-green-600 mb-2">Booking Confirmed!</h3>
           <p className="text-gray-600 mb-4">Your chauffeur is on the way.</p>
+          
+          <div className="mb-6">
+            <ol className="relative border-l border-gray-200 dark:border-gray-700">
+              {bookingStatuses.map((status, index) => (
+                <li key={status.id} className="mb-6 ml-4">
+                  <div className={`absolute w-3 h-3 rounded-full mt-1.5 -left-1.5 border ${index === 0 ? 'bg-green-500 border-green-500' : 'bg-gray-200 border-gray-200'}`}></div>
+                  <p className={`text-sm font-semibold ${index === 0 ? 'text-green-600' : 'text-gray-500'}`}>{status.label}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          
           <Card className="p-4 text-left mb-4">
             <div className="space-y-2">
               <div className="flex justify-between">
@@ -287,6 +384,12 @@ const BookTaxiForm = () => {
               <div className="flex justify-between">
                 <span className="text-sm text-gray-500">Transport:</span>
                 <span className="font-medium">{taxiTypes.find(t => t.id === selectedTaxiType)?.name}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm text-gray-500">Vehicle:</span>
+                <span className="font-medium">
+                  {carModels[selectedTaxiType as keyof typeof carModels].find(c => c.id === selectedCarModel)?.name}
+                </span>
               </div>
             </div>
           </Card>

@@ -17,6 +17,8 @@ import AdminRentalVehicles from "./pages/AdminRentalVehicles";
 import AdminPaymentSettings from "./pages/AdminPaymentSettings";
 import DriverDashboard from "./pages/DriverDashboard";
 import DriverBankDetails from "./pages/DriverBankDetails";
+import BookChauffeur from "./pages/BookChauffeur";
+import HourlyRental from "./pages/HourlyRental";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/book-chauffeur" element={<BookChauffeur />} />
+          <Route path="/hourly-rental" element={<HourlyRental />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/taxi-types" element={<AdminTaxiTypes />} />
           <Route path="/admin/fare-settings" element={<AdminFareSettings />} />
